@@ -1,0 +1,34 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: microcloud-provider-users
+
+
+logging:
+  level:
+    cn.enjoy.mapper: debug
+
+eureka:
+  client:
+    service-url:
+      #      defaultZone: http://localhost:7001/eureka
+      defaultZone:  http://admin:enjoy@eureka1:7001/eureka,http://admin:enjoy@eureka2:7002/eureka,http://admin:enjoy@eureka3:7003/eureka
+  instance:
+    instance-id: microcloud-provider-users
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 2 #没置心·弥的时行问隔（默认是30{秒)
+    lease-expiration-duration-in-seconds: 5 #如i果现在超过了5秒的问隔(默认是90秒)
+
+info:
+  app.name: microcloud-provider-users
+  company.name: enjoy
+  build.artifactId: $project.artifactId$
+  build.modelVersion: $project.modelVersion$
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
